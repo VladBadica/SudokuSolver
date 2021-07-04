@@ -1,0 +1,10 @@
+C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\bin\Debug\SudokuSolver.exe.config
+C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\bin\Debug\SudokuSolver.exe
+C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\bin\Debug\SudokuSolver.pdb
+C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.csprojAssemblyReference.cache
+C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.FormMain.resources
+C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.Properties.Resources.resources
+C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.csproj.GenerateResource.cache
+C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.csproj.CoreCompileInputs.cache
+C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.exe
+C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.pdb
