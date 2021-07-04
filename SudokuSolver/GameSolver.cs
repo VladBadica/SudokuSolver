@@ -2,45 +2,70 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SudokuSolver
 {
     public class GameSolver
-    {      
+    {
+        private readonly Label _lblSudoku;
 
-        public int[,] Solve(int[,] board)
+        public GameSolver()
         {
-            for(int i = 0; i < 9; i++)
+            _lblSudoku = (Label)Application.OpenForms["FormMain"].Controls.Find("lblSudoku", false).FirstOrDefault();
+            Control.CheckForIllegalCrossThreadCalls = false;
+        }
+        public bool Solve(int[,] board)
+        {
+            Thread.Sleep(1);
+            _lblSudoku.Text = FormMain.PrintBoard(board);
+            
+            var find = FindEmpty(board);
+            if (find == null)
             {
-                for(int j = 0; j< 9; j++)
-                {
-                    board[i, j] = 1;
-                }
+                return true;
             }
 
-            return board;
+            for (var i = 1; i <= 9; i++)
+            {
+                if (CheckValid(board, i, find))
+                {
+                    board[find.Item1, find.Item2] = i;
+
+                    if (Solve(board))
+                    {
+                        return true;
+                    }
+
+                }
+
+                board[find.Item1, find.Item2] = 0;
+
+            }
+
+            return false;
         }
 
-        public Tuple<int, int> findEmpty(int[,] board)
+        public Tuple<int, int> FindEmpty(int[,] board)
         {
-            for(int i = 0; i < 9; i++)
+            for(var i = 0; i < 9; i++)
             {
-                for(int j = 0; j < 9; j++)
+                for(var j = 0; j < 9; j++)
                 {
                     if (board[i, j] == 0)
                         return new Tuple<int, int>(i, j); 
                 }
             }
 
-           return new Tuple<int, int>(-1,-1);
+            return null;
         }
 
-        public bool checkValid(int[,] board, int number, Tuple<int, int> position)
+        public bool CheckValid(int[,] board, int number, Tuple<int, int> position)
         {
-            Console.WriteLine("AWDAW");
             // Check columns
-            for (int i = 0; i< 9; i++)
+            for (var i = 0; i< 9; i++)
             {
                 if(board[i,position.Item2] == number && i != position.Item1)
                 {
@@ -49,7 +74,7 @@ namespace SudokuSolver
             }
 
             //Check rows
-            for (int j = 0; j < 9; j++)
+            for (var j = 0; j < 9; j++)
             {
                 if (board[position.Item1, j] == number && j != position.Item2)
                 {
@@ -58,12 +83,11 @@ namespace SudokuSolver
             }
 
             //Check Box
-            Tuple<int, int> boxStart = new Tuple<int, int>(position.Item1 / 3 * 3, position.Item2 / 3 * 3);
+            var (boxStartX, boxStartY) = new Tuple<int, int>(position.Item1 / 3 * 3, position.Item2 / 3 * 3);
 
-            for(int i = boxStart.Item1; i < boxStart.Item1+ 3; i++)
+            for(var i = boxStartX; i < boxStartX + 3; i++)
             {
-
-                for (int j = boxStart.Item2; j < boxStart.Item2 + 3; j++)
+                for (var j = boxStartY; j < boxStartY + 3; j++)
                 {
                     if(board[i,j] == number && i != position.Item1 && j != position.Item2)
                     {
