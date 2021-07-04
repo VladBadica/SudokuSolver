@@ -17,12 +17,11 @@ namespace SudokuSolver
             _lblSudoku = (Label)Application.OpenForms["FormMain"].Controls.Find("lblSudoku", false).FirstOrDefault();
             Control.CheckForIllegalCrossThreadCalls = false;
         }
-        public bool Solve(int[,] board)
+        public bool Solve(Board board)
         {
-            Thread.Sleep(1);
-            _lblSudoku.Text = FormMain.PrintBoard(board);
+           // Thread.Sleep(1);
             
-            var find = FindEmpty(board);
+            var find = FindEmpty(board.GetMatrix());
             if (find == null)
             {
                 return true;
@@ -30,9 +29,9 @@ namespace SudokuSolver
 
             for (var i = 1; i <= 9; i++)
             {
-                if (CheckValid(board, i, find))
+                if (CheckValid(board.GetMatrix(), i, find))
                 {
-                    board[find.Item1, find.Item2] = i;
+                    board.SetValue(i, find);
 
                     if (Solve(board))
                     {
@@ -41,7 +40,7 @@ namespace SudokuSolver
 
                 }
 
-                board[find.Item1, find.Item2] = 0;
+                board.SetValue(0, find);
 
             }
 

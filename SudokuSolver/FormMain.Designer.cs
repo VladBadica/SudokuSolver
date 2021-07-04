@@ -30,12 +30,11 @@ namespace SudokuSolver
         private void InitializeComponent()
         {
             this.btnSolve = new System.Windows.Forms.Button();
-            this.lblSudoku = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSolve
             // 
-            this.btnSolve.Location = new System.Drawing.Point(279, 476);
+            this.btnSolve.Location = new System.Drawing.Point(311, 517);
             this.btnSolve.Name = "btnSolve";
             this.btnSolve.Size = new System.Drawing.Size(79, 32);
             this.btnSolve.TabIndex = 0;
@@ -43,23 +42,11 @@ namespace SudokuSolver
             this.btnSolve.UseVisualStyleBackColor = true;
             this.btnSolve.Click += new System.EventHandler(this.btnSolve_Click);
             // 
-            // lblSudoku
-            // 
-            this.lblSudoku.AutoSize = true;
-            this.lblSudoku.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSudoku.Location = new System.Drawing.Point(323, 122);
-            this.lblSudoku.Name = "lblSudoku";
-            this.lblSudoku.Size = new System.Drawing.Size(51, 20);
-            this.lblSudoku.TabIndex = 1;
-            this.lblSudoku.Text = "label1";
-            this.lblSudoku.Click += new System.EventHandler(this.lblSudoku_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.lblSudoku);
             this.Controls.Add(this.btnSolve);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -68,14 +55,12 @@ namespace SudokuSolver
             this.Text = "SudokuSolver";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btnSolve;
-        private System.Windows.Forms.Label lblSudoku;
     }
 }
 

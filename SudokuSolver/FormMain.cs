@@ -13,62 +13,20 @@ namespace SudokuSolver
 {
     public partial class FormMain : Form
     {
+        private Board _board;
         private GameSolver _gameSolver;
         private bool _isSolving; 
-        public int[,] Board;
-
 
         public FormMain()
         {
             InitializeComponent();
-            Board = new[,]
-            {
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 } ,
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 } ,
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 } ,
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 } ,
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 } ,
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 } ,
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 } ,
-                { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-            };
         }
 
-        public static string PrintBoard(int[,] board)
-        {
-            var result = new StringBuilder();
-            for (var i = 0; i < 9; i++)
-            {
-                if (i % 3 == 0 && i != 0)
-                {
-                    result.Append("---------------------------");
-                    result.Append("\n");
-                }
-                for (var j = 0; j < 9; j++)
-                {
-                    if (j % 3 == 0 && j != 0)
-                    {
-                        result.Append("| ");
-                    }
-                    result.Append(board[i, j]);
-                    result.Append(" ");
-                }
-                result.Append("\n");
-            }
-
-            return result.ToString();
-        }
-
+        
         private void FormMain_Load(object sender, EventArgs e)
         {
+            _board = new Board();
             _gameSolver = new GameSolver();
-            lblSudoku.Text = PrintBoard(Board);
-
-        }
-
-        private void lblSudoku_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -80,14 +38,14 @@ namespace SudokuSolver
                 {
                     _isSolving = true;
                     Thread.CurrentThread.IsBackground = true;
-                    _gameSolver.Solve(Board);
+                    _gameSolver.Solve(_board);
                 }).Start();
             }
             else
             {
                 MessageBox.Show("Solve in progress!");
             }
-
         }
+
     }
 }
