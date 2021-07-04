@@ -15,16 +15,17 @@ namespace SudokuSolver
         private readonly int[,] _matrix;
         public void SetValue(int number, Tuple<int, int> position)
         {
+            
             var (x, y) = position;
             _matrix[x, y] = number;
-            _buttons[x, y].Text = number.ToString();
+            _buttons[x, y].Text = number == 0 ? "" : number.ToString();
 
         }
         public int[,] GetMatrix() => _matrix;
 
         private readonly Button[,] _buttons = new Button[9, 9];
         private const int CellSize = 48;
-        private static readonly char[] ValidKeys = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
+        private static readonly int[] ValidKeys = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 
 
         public Board()
@@ -46,20 +47,35 @@ namespace SudokuSolver
 
         private void CreateMap()
         {
+            var offSetX = 0;
+            var offSetY = 0;
             for (var i = 0; i < 9; i++)
             {
+                if (i % 3 == 0 && i != 0)
+                {
+                    offSetY += 10;
+                }
+                offSetX = 0;
                 for (var j = 0; j < 9; j++)
                 {
+                    if (j % 3 == 0 && j != 0)
+                    {
+                        offSetX += 10;
+                    }
+
+                    var cellX = offSetX + 50 + j * CellSize;
+                    var cellY = offSetY +  50 + i * CellSize;
+                    
                     var btnCell = new Button
                     {
                         Name = $"{i},{j}",
                         Size = new Size(CellSize, CellSize),
-                        Text = _matrix[i, j].ToString(),
-                        Location = new Point(j * CellSize, i * CellSize)
+                        Text = _matrix[i, j] == 0 ? "" : _matrix[i, j].ToString(),
+                        Location = new Point(cellX, cellY)
                     }; 
 
                     btnCell.Font = new Font(btnCell.Font.FontFamily, 17);
-                    btnCell.KeyPress += btnKeyPress;
+                    btnCell.KeyDown += btnKeyPress;
 
                     _buttons[i, j] = btnCell;
                     Application.OpenForms["FormMain"].Controls.Add(btnCell);
@@ -67,12 +83,18 @@ namespace SudokuSolver
             }
         }
 
-        public void btnKeyPress(object sender, KeyPressEventArgs e)
+        public void btnKeyPress(object sender, KeyEventArgs e)
         {
-            if (!ValidKeys.Contains(e.KeyChar)) return;
-
             var btnPressed = sender as Button;
-            SetValue((int)char.GetNumericValue(e.KeyChar), new Tuple<int, int>(int.Parse(btnPressed.Name.Split(',')[0]), int.Parse(btnPressed.Name.Split(',')[1])));
+            if (ValidKeys.Contains(e.KeyValue))
+            {
+                SetValue((int)char.GetNumericValue((char)e.KeyValue), new Tuple<int, int>(int.Parse(btnPressed.Name.Split(',')[0]), int.Parse(btnPressed.Name.Split(',')[1])));
+            }
+            else if(e.KeyCode == Keys.Back)
+            {
+                SetValue(0, new Tuple<int, int>(int.Parse(btnPressed.Name.Split(',')[0]), int.Parse(btnPressed.Name.Split(',')[1])));
+            }
+
         }
 
     }

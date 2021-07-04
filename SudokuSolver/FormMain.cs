@@ -46,6 +46,5 @@ namespace SudokuSolver
                 MessageBox.Show("Solve in progress!");
             }
         }
-
     }
 }

@@ -30,11 +30,12 @@ namespace SudokuSolver
         private void InitializeComponent()
         {
             this.btnSolve = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSolve
             // 
-            this.btnSolve.Location = new System.Drawing.Point(311, 517);
+            this.btnSolve.Location = new System.Drawing.Point(236, 517);
             this.btnSolve.Name = "btnSolve";
             this.btnSolve.Size = new System.Drawing.Size(79, 32);
             this.btnSolve.TabIndex = 0;
@@ -42,11 +43,22 @@ namespace SudokuSolver
             this.btnSolve.UseVisualStyleBackColor = true;
             this.btnSolve.Click += new System.EventHandler(this.btnSolve_Click);
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(190, 9);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(152, 33);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "Sudoku Solver";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(536, 561);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnSolve);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -55,12 +67,14 @@ namespace SudokuSolver
             this.Text = "SudokuSolver";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btnSolve;
+        private System.Windows.Forms.Label lblTitle;
     }
 }
 
