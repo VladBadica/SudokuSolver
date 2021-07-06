@@ -29,25 +29,26 @@ namespace SudokuSolver
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.btnSolve = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnSolve
             // 
-            this.btnSolve.Location = new System.Drawing.Point(236, 517);
+            this.btnSolve.Location = new System.Drawing.Point(12, 12);
             this.btnSolve.Name = "btnSolve";
-            this.btnSolve.Size = new System.Drawing.Size(79, 32);
+            this.btnSolve.Size = new System.Drawing.Size(59, 22);
             this.btnSolve.TabIndex = 0;
             this.btnSolve.Text = "Solve";
             this.btnSolve.UseVisualStyleBackColor = true;
-            this.btnSolve.Click += new System.EventHandler(this.btnSolve_Click);
+            this.btnSolve.Click += new System.EventHandler(this.BtnSolve_Click);
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(190, 9);
+            this.lblTitle.Location = new System.Drawing.Point(170, 38);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(152, 33);
             this.lblTitle.TabIndex = 1;
@@ -61,6 +62,7 @@ namespace SudokuSolver
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnSolve);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

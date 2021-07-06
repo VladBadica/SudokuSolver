@@ -14,7 +14,6 @@ namespace SudokuSolver
     public partial class FormMain : Form
     {
         private Board _board;
-        private GameSolver _gameSolver;
         private bool _isSolving; 
 
         public FormMain()
@@ -26,11 +25,10 @@ namespace SudokuSolver
         private void FormMain_Load(object sender, EventArgs e)
         {
             _board = new Board();
-            _gameSolver = new GameSolver();
 
         }
 
-        private void btnSolve_Click(object sender, EventArgs e)
+        private void BtnSolve_Click(object sender, EventArgs e)
         {
             if (!_isSolving)
             {
@@ -38,7 +36,7 @@ namespace SudokuSolver
                 {
                     _isSolving = true;
                     Thread.CurrentThread.IsBackground = true;
-                    _gameSolver.Solve(_board);
+                    _board.Solve();
                 }).Start();
             }
             else
@@ -46,5 +44,15 @@ namespace SudokuSolver
                 MessageBox.Show("Solve in progress!");
             }
         }
+
+        private void BtnOptions_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["OptionsForm"] == null)
+            {
+                var form = new OptionsForm();
+                form.Show();
+            }
+        }
+        
     }
 }

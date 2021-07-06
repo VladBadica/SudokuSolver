@@ -8,3 +8,4 @@ C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.csp
 C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.csproj.CoreCompileInputs.cache
 C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.exe
 C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.pdb
+C:\Users\vladb\Source\Repos\SudokuSolver\SudokuSolver\obj\Debug\SudokuSolver.OptionsForm.resources
